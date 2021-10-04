@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../stylesheet/App.css';
-const v = "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";
+import Title from './Title';
 
 const api = {
   key: "c0a0c889255cea15a18511aa836895dc",
@@ -11,8 +11,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = evt => {
-    if(evt.key === "Enter"){
+  const search = event => {
+    if(event.key === "Enter"){
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(res => res.json())
       .then(result => {
@@ -37,6 +37,9 @@ function App() {
 
   return (
     <div className="app">
+      <div className="app-title-container">
+        <Title/>
+      </div>
       <main>
         <div className="search-box">
           <input 
